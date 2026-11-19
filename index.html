@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#167343">
+<title>Shatayushi Generic Medico | Thane</title>
+<style>
+:root{--green:#167343;--dark:#105631;--mint:#eaf6ee;--ink:#183126;--muted:#65756b;--line:#dce9df;--white:#fff}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f6faf7;color:var(--ink)}
+header{background:linear-gradient(120deg,#0f6036,#21894e);color:white;padding:22px max(18px,calc((100% - 1080px)/2))}
+.brand{display:flex;gap:12px;align-items:center}.cross{font-size:35px;font-weight:bold;background:#fff;color:var(--green);width:48px;height:48px;border-radius:14px;display:grid;place-items:center}
+h1{font-size:22px;margin:0 0 4px}header p{margin:0;color:#e3f4e8;font-size:13px}
+.wrap{max-width:1080px;margin:auto;padding:20px 16px 60px}
+.hero{background:var(--mint);border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:20px}
+.hero h2{margin:0 0 8px;color:var(--dark);font-size:26px}.hero p{margin:0;color:#476353;line-height:1.5}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+input,select,button{font:inherit}#search{flex:1;min-width:210px;padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:white}
+select{padding:13px;border:1px solid var(--line);border-radius:12px;background:white}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px;align-items:start}
+.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.card,.cart{background:white;border:1px solid var(--line);border-radius:15px;padding:15px}
+.pill{display:inline-block;background:var(--mint);color:var(--dark);font-size:11px;font-weight:bold;padding:5px 8px;border-radius:20px}
+.card h3{font-size:16px;margin:10px 0 4px}.salt{font-size:13px;color:var(--muted);min-height:32px}
+.price{font-weight:bold;font-size:18px;margin:12px 0;color:var(--dark)}.note{font-size:11px;color:#85621b;margin:8px 0}
+button{border:0;border-radius:10px;padding:11px 13px;background:var(--green);color:white;font-weight:bold;cursor:pointer}
+button:hover{background:var(--dark)}button.secondary{background:#e9f3ec;color:var(--dark)}
+.cart{position:sticky;top:12px}.cart h2{font-size:18px;margin:0 0 12px}.cartline{display:flex;justify-content:space-between;gap:8px;font-size:13px;padding:9px 0;border-bottom:1px solid var(--line)}
+.cartline button{padding:4px 8px;background:#fbe9e9;color:#9b2929}.empty{font-size:13px;color:var(--muted);line-height:1.5}
+.total{display:flex;justify-content:space-between;font-weight:bold;margin:14px 0}
+.full{width:100%;margin-top:8px}.small{font-size:11px;color:var(--muted);line-height:1.5}
+footer{margin-top:24px;border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:12px;line-height:1.6}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.cart{position:static;order:-1}.products{grid-template-columns:1fr 1fr}}
+@media(max-width:430px){.products{grid-template-columns:1fr}.hero h2{font-size:22px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="brand"><div class="cross">+</div><div><h1>SHATAYUSHI GENERIC MEDICO</h1><p>Your neighbourhood pharmacy · Thane (W)</p></div></div>
+</header>
+<main class="wrap">
+ <section class="hero">
+  <h2>Quality medicines. Thoughtful savings.</h2>
+  <p>Browse our medicine catalogue and send an order enquiry to our pharmacy. Our pharmacist will confirm availability, the correct product and the final price.</p>
+ </section>
+ <div class="tools">
+  <input id="search" type="search" placeholder="Search medicine or salt name…" aria-label="Search medicines">
+  <select id="category" aria-label="Filter by category"><option value="all">All medicines</option><option value="OTC">OTC / Pharmacy items</option><option value="Prescription">Prescription required</option></select>
+ </div>
+ <div class="layout">
+  <section><div id="products" class="products"></div></section>
+  <aside class="cart">
+   <h2>Your enquiry basket</h2><div id="cart-items"><p class="empty">Your basket is empty. Add items to prepare a WhatsApp enquiry.</p></div>
+   <div class="total"><span>Indicative total</span><span id="total">₹0</span></div>
+   <button class="full" id="order">Send enquiry on WhatsApp</button>
+   <p class="small">Sending an enquiry does not confirm an order. Prescription medicines are supplied only after valid prescription verification and pharmacist review.</p>
+  </aside>
+ </div>
+ <footer>
+  <strong>Shatayushi Generic Medico</strong><br>
+  Shop No. 6, Anannya Apartment, Ghantali Mandir Road, Thane (W) – 400602<br>
+  Call / WhatsApp: <a href="tel:7715897277">7715897277</a><br><br>
+  <strong>Important:</strong> This is a demonstration catalogue. All medicine prices and availability shown are sample placeholders, not live stock or actual selling prices. Please confirm details with the pharmacy. Use medicines only as advised by a qualified healthcare professional. Prescription-only medicines require a valid prescription and applicable legal checks.
+ </footer>
+</main>
+<script>
+const DEMO = [
+ {id:1,name:"Paracetamol 500 mg",salt:"Paracetamol · 500 mg tablet",category:"OTC",price:18,unit:"Sample price / strip",rx:false},
+ {id:2,name:"Cetirizine 10 mg",salt:"Cetirizine hydrochloride · 10 mg tablet",category:"OTC",price:15,unit:"Sample price / strip",rx:false},
+ {id:3,name:"ORS Sachet",salt:"Oral rehydration salts · sachet",category:"OTC",price:22,unit:"Sample price / sachet",rx:false},
+ {id:4,name:"Pantoprazole 40 mg",salt:"Pantoprazole · 40 mg tablet",category:"Prescription",price:35,unit:"Sample price / strip",rx:true},
+ {id:5,name:"Metformin 500 mg",salt:"Metformin hydrochloride · 500 mg tablet",category:"Prescription",price:20,unit:"Sample price / strip",rx:true},
+ {id:6,name:"Atorvastatin 10 mg",salt:"Atorvastatin · 10 mg tablet",category:"Prescription",price:18,unit:"Sample price / strip",rx:true}
+];
+const basket = new Map();
+const products = document.getElementById("products");
+const search = document.getElementById("search");
+const category = document.getElementById("category");
+function renderProducts(){
+ const q=search.value.trim().toLowerCase(), c=category.value;
+ const filtered=DEMO.filter(p=>(c==="all"||p.category===c)&&(p.name+" "+p.salt).toLowerCase().includes(q));
+ products.innerHTML=filtered.map(p=>`<article class="card">
+  <span class="pill">${p.rx?"PRESCRIPTION REQUIRED":"PHARMACY ITEM"}</span>
+  <h3>${p.name}</h3><div class="salt">${p.salt}</div>
+  <div class="price">₹${p.price} <span style="font-size:11px;font-weight:normal;color:#65756b">· ${p.unit}</span></div>
+  ${p.rx?'<p class="note">Valid prescription and pharmacist verification required.</p>':'<p class="note">Ask the pharmacist if this product is suitable for you.</p>'}
+  <button onclick="addItem(${p.id})">Add to enquiry</button>
+ </article>`).join("")||'<p class="empty">No matching sample medicines. Try another search.</p>';
+}
+function addItem(id){basket.set(id,(basket.get(id)||0)+1);renderCart()}
+function changeQty(id,delta){const n=(basket.get(id)||0)+delta;if(n<=0)basket.delete(id);else basket.set(id,n);renderCart()}
+function renderCart(){
+ const el=document.getElementById("cart-items");let sum=0;
+ if(!basket.size){el.innerHTML='<p class="empty">Your basket is empty. Add items to prepare a WhatsApp enquiry.</p>'}
+ else{el.innerHTML=[...basket].map(([id,qty])=>{const p=DEMO.find(x=>x.id===id);sum+=p.price*qty;return `<div class="cartline"><span>${p.name}<br>₹${p.price} × ${qty}<br><button onclick="changeQty(${id},-1)">−</button> <button onclick="changeQty(${id},1)">+</button></span><strong>₹${p.price*qty}</strong></div>`}).join("")}
+ document.getElementById("total").textContent="₹"+sum+"*";
+}
+search.addEventListener("input",renderProducts);category.addEventListener("change",renderProducts);
+document.getElementById("order").addEventListener("click",()=>{
+ if(!basket.size){alert("Please add at least one item first.");return}
+ const lines=[...basket].map(([id,qty])=>{const p=DEMO.find(x=>x.id===id);return `${p.name} x ${qty}${p.rx?" (prescription required)":""}`});
+ const msg="Hello Shatayushi Generic Medico, I would like to enquire about availability and current prices for:\\n"+lines.join("\\n")+"\\n\\nPlease confirm stock, final price and prescription requirements. This is an enquiry only.";
+ window.open("https://wa.me/917715897277?text="+encodeURIComponent(msg),"_blank");
+});
+renderProducts();renderCart();
+</script>
+</body></html>
